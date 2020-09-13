@@ -222,17 +222,11 @@ print(X_test.shape)
 model = tree.DecisionTreeClassifier()
 model.fit(X_train,y_train)
 
-#Reshape the predicted model 
-model.predict(X_train).shape
-model.predict(X_train).reshape(616,1)
-
-model.predict(X_test).shape
-model.predict(X_test).reshape(265,1)
+#Get the accuracy of the decesion tree model
+model.score(X_test, y_test)
+model.score(X_train, y_train)
 
 
-#Measure the model performance by accuracy
-accu_train = np.sum(model.predict(X_train).reshape(616,1) == y_train)/ y_train.size
-accu_test = np.sum(model.predict(X_test).reshape(265,1) == y_test)/ y_test.size
 
 
 
