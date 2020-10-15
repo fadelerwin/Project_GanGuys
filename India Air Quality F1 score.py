@@ -232,6 +232,25 @@ model_dt.fit(X_train,y_train)
 model_dt.score(X_test, y_test)
 model_dt.score(X_train, y_train)
 
+#------------------------------------------------
+#MATRIX FOR EVALUATION 
+#--------------------------------------------------
+#For reference in evaluating ML models: https://www.jeremyjordan.me/evaluating-a-machine-learning-model/
+#Import from sklearn.metrics
+from sklearn.metrics import f1_score,accuracy_score,confusion_matrix
+from sklearn.metrics import classification_report
+
+#f1_score(y_test, y_pred)
+f1_score(y_test, model_dt.predict(X_test), average = 'micro')
+f1_score(y_test, model_bayes.predict(X_test),average='micro')
+
+#Confusion matrix(y_test, y_predict)
+confusion_matrix(y_test, model_dt.predict(X_test))
+print(classification_report(y_test, model_dt.predict(X_test)))
+
+confusion_matrix(y_test,model_bayes.predict(X_test))
+print(classification_report(y_test,model_bayes.predict(X_test)))
+
 
 
 # =============================================================================
@@ -454,19 +473,3 @@ model_bayes.score(X_test, y_test) #75.84% accuracy is achieved
 
 
 
-#MATRIX FOR EVALUATION 
-#For reference in evaluating ML models: https://www.jeremyjordan.me/evaluating-a-machine-learning-model/
-#Import from sklearn.metrics
-from sklearn.metrics import f1_score,accuracy_score,confusion_matrix
-from sklearn.metrics import classification_report
-
-#f1_score(y_test, y_pred)
-f1_score(y_test, model_dt.predict(X_test), average = 'micro')
-f1_score(y_test, model_bayes.predict(X_test),average='micro')
-
-#Confusion matrix(y_test, y_predict)
-confusion_matrix(y_test, model_dt.predict(X_test))
-print(classification_report(y_test, model_dt.predict(X_test)))
-
-confusion_matrix(y_test,model_bayes.predict(X_test))
-print(classification_report(y_test,model_bayes.predict(X_test)))
